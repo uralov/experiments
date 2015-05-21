@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-my_typle = (1, 2, 3)
+my_tuple = (1, 2, 3)
 my_dict = {'a': 1, 'b': 2}
 
 
@@ -10,4 +10,4 @@ def args_sum(*args):
 
     return summary
 
-print args_sum(*my_typle)
+print args_sum(*my_tuple)
