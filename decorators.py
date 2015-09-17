@@ -22,17 +22,17 @@ my_func(2)
 # decorated_func(q=2)
 
 
-def sleep_decorator():
+def sleep_decorator(*decorator_args, **decorator_kwargs):
     print "decorator sleep with parameters"
 
-    def decorator(fn):
+    def decorator(function):
         print "decorator body"
 
-        def wrapper(*args):
+        def wrapper(*func_args, **func_kwargs):
             print "wrapper body"
             seconds = 1
             time.sleep(seconds)
-            return fn(*args)
+            return function(*func_args)
 
         return wrapper
 
