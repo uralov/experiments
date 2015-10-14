@@ -1,0 +1,7 @@
+/.idea/
+syntax: regexp
+^\..*$
+syntax: regexp
+^.*~$
+syntax: regexp
+^.*\.pyc$
