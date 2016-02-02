@@ -2,45 +2,40 @@
 import time
 
 
-def my_decorator(fn):
+def sleep_3_decorator(fn):
     print u"я декоратор"
 
     def wrapper(q):
-        print u"я обёртка с параметром %s" % q
+        time.sleep(3)
         return fn(q)
 
     return wrapper
 
 
-@my_decorator
-def my_func(q=1):
+@sleep_3_decorator
+def my_func(q):
     print u"я функция с параметром %s" % q
 
 my_func(2)
 
-# decorated_func = my_decorator(my_func)
+# decorated_func = sleep_3_decorator(my_func)
 # decorated_func(q=2)
 
 
-def sleep_decorator(*decorator_args, **decorator_kwargs):
-    print "decorator sleep with parameters"
-
+def sleep_decorator(sleep_time):
     def decorator(function):
-        print "decorator body"
-
         def wrapper(*func_args, **func_kwargs):
             print "wrapper body"
-            seconds = 1
-            time.sleep(seconds)
-            return function(*func_args)
+            time.sleep(sleep_time)
+            return function(*func_args, **func_kwargs)
 
         return wrapper
 
     return decorator
 
 
-@sleep_decorator()
-def my_func2(q=1):
+@sleep_decorator(2)
+def my_func2(q):
     print u"my_func2 with param %s" % q
 
 my_func2(5)
